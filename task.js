@@ -1,26 +1,29 @@
 "use strict"
-function solveEquation(a, b, c) {
-  let arr = [];
-  let d = b**2-4*a*c;
-  if (d > 0) {
-    let x1 = (-b + Math.sqrt(d))/(2*a);
-    let x2 = (-b - Math.sqrt(d))/(2*a);
-    arr.push(x1, x2);
-  } else if (d == 0) {
-      let x1 = -b/(2*a);
-      arr.push(x1);
+let solveEquation = (a, b, c) => {
+  if(a == 0)
+      return false;
+  let arr = {};
+  let d = b * b - 4 * a * c;
+  console.log('d = ' + d);
+  if(d < 0)
+      return false;
+  arr['дискриминант'] = d;
+  if(d == 0)
+      arr["квадратный корень"] = (-b + Math.sqrt(d)) / (2 * a);
+  else if(d > 0){
+      let tmp = [];
+      tmp.push((-b + Math.sqrt(d)) / (2 * a));
+      tmp.push((-b - Math.sqrt(d)) / (2 * a));
+      arr["квадратный корень"] = tmp;
   }
-  console.log(arr);
   return arr;
 }
-
-solveEquation(2,4,8);
-
+console.log(solveEquation(1,12,36));
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  let per = parseInt(percent) / 100 / 12; //процент
-    let con = parseInt(contribution); 	  //начальный взнос	
-    let am = parseInt(amount);  			  //общая стоимость	
+  let per = percent / 100 / 12; //процент
+    let con = contribution; 	  //начальный взнос	
+    let am = amount;  			  //общая стоимость	
   	if (isNaN(per) || per < 0) {
    		return `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`;
    	} else if (isNaN(con) || con < 0) {
