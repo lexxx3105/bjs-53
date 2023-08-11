@@ -1,24 +1,19 @@
 "use strict"
-let solveEquation = (a, b, c) => {
-  if(a == 0)
-      return false;
-  let arr = [];
-  let d = b * b - 4 * a * c;
-  console.log('d = ' + d);
-  if(d < 0)
-      return false;
-  arr['дискриминант'] = d;
-  if(d == 0)
-      arr["квадратный корень"] = (-b + Math.sqrt(d)) / (2 * a);
-  else if(d > 0){
-      let tmp = [];
-      tmp.push((-b + Math.sqrt(d)) / (2 * a));
-      tmp.push((-b - Math.sqrt(d)) / (2 * a));
-      arr["квадратный корень"] = tmp;
+function solveEquation(a, b, c) {
+  const d = b** - 4 * a * c;
+  if (d < 0) {
+      return [];
   }
-  return arr;
-}
-console.log(solveEquation(1,12,36));
+  else if (d === 0) {
+      const x = -b / (2 * a);
+      return [x];
+  }
+  return [(-b + Math.sqrt(d)) / (2 * a), (-b - Math.sqrt(d)) / (2 * a)];
+};
+
+console.log(solveEquation(1, 5, 4))
+console.log(solveEquation(1, 2, 1))
+console.log(solveEquation(1, 2, 10))
 
 
 function calculateTotalMortgage(percent, contribution, amount, months) {  
