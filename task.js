@@ -1,6 +1,6 @@
 "use strict"
 function solveEquation(a, b, c) {
-  const d = b** - 4 * a * c;
+  const d = b**2 - 4 * a * c;
   if (d < 0) {
       return [];
   }
