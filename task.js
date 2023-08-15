@@ -17,15 +17,15 @@ console.log(solveEquation(1, 2, 10))
 
 
 function calculateTotalMortgage(percent, contribution, amount, months) {  
-  let per = percent * 12; // преобразуем процентную ставку в диапазон 0-1
+  let per = percent / 12 / 100; // преобразуем процентную ставку в диапазон 0-1
   let monthlyRate = per / months; // месячная ставка
   let bodyCredit = amount - contribution; //тело кредита
   let pay = bodyCredit * (per + (per / (((1 + per) **months) -1))); // ежемесячная оплата
   let sumPay = pay * months; //общая сумма платяжей
-  let totalAmount = (sumPay + contribution).toFixed(2);  //итоговая сумма выплат
+  let totalAmount = sumPay.toFixed(2);  //итоговая сумма выплат
   console.log("Общий платеж по ипотеке:", totalAmount);  
   return +totalAmount;  
-  };  
+  };   
   
 calculateTotalMortgage(10, 0, 50000, 12)
 calculateTotalMortgage(10, 1000, 50000, 12)
